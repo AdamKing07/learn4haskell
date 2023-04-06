@@ -449,7 +449,8 @@ Implement the function that takes an integer value and returns the next 'Int'.
   function body with the proper implementation.
 -}
 next :: Int -> Int
-next x = error "next: not implemented!"
+-- next x = error "next: not implemented!"
+next x = 1+x
 
 {- |
 After you've implemented the function (or even during the implementation), you
@@ -490,8 +491,9 @@ Implement a function that returns the last digit of a given number.
   whether it works for you!
 -}
 -- DON'T FORGET TO SPECIFY THE TYPE IN HERE
-lastDigit n = error "lastDigit: Not implemented!"
-
+lastDigit :: Int -> Int
+--lastDigit n = error "lastDigit: Not implemented!"
+lastDigit n = mod (abs n) 10
 
 {- |
 =⚔️= Task 6
@@ -520,8 +522,8 @@ branches because it is an expression and it must always return some value.
   satisfying the check will be returned and, therefore, evaluated.
 -}
 closestToZero :: Int -> Int -> Int
-closestToZero x y = error "closestToZero: not implemented!"
-
+--closestToZero x y = error "closestToZero: not implemented!"
+closestToZero x y = if abs x < abs y then x else y
 
 {- |
 =⚔️= Task 7
@@ -554,8 +556,15 @@ value after "=" where the condition is true.
 Casual reminder about adding top-level type signatures for all functions :)
 -}
 
-mid x y z = error "mid: not implemented!"
-
+--mid x y z = error "mid: not implemented!"
+mid :: Int -> Int -> Int -> Int
+mid x y z 
+    | x > y && y > z = y
+    | x < y && y < z = y
+    | x < y && x < z && y > z = z
+    | x < y && x < z && y < z = y
+    | x > y && x > z && y < z = y
+    | otherwise = x 
 {- |
 =⚔️= Task 8
 
@@ -568,8 +577,23 @@ True
 >>> isVowel 'x'
 False
 -}
-isVowel c = error "isVowel: not implemented!"
+--isVowel c = error "isVowel: not implemented!"
+isVowel :: Char -> Bool
+isVowel c
+    | c == 'a' = True
+    | c == 'e' = True
+    | c == 'i' = True
+    | c == 'o' = True
+    | c == 'u' = True
+    | otherwise = False
 
+isVowel2 :: Char -> Bool
+isVowel2 'a' = True
+isVowel2 'e' = True
+isVowel2 'i' = True
+isVowel2 'o' = True
+isVowel2 'u' = True
+isVowel2 c = False
 
 {- |
 == Local variables and functions
@@ -632,7 +656,13 @@ Try to introduce variables in this task (either with let-in or where) to avoid
 specifying complex expressions.
 -}
 
-sumLast2 n = error "sumLast2: Not implemented!"
+--sumLast2 n = error "sumLast2: Not implemented!"
+sumLast2 :: Int -> Int
+sumLast2 n = a + b
+    where
+        m = mod n 100
+        a = div m 10
+        b = mod m 10
 
 
 {- |
@@ -653,7 +683,9 @@ You need to use recursion in this task. Feel free to return to it later, if you
 aren't ready for this boss yet!
 -}
 
-firstDigit n = error "firstDigit: Not implemented!"
+--firstDigit n = error "firstDigit: Not implemented!"
+firstDigit :: Int -> Int
+firstDigit n = if n < 10 then n else firstDigit (div n 10)
 
 
 {-
